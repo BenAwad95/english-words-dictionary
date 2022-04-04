@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{page_title}}
+{% endblock title %}
+
+{% block content %}
+
+
+<div class="container">
+
+  <div class="word-show">
+    <div class="word-box f-v p-1">
+      <div class="ops f-v">
+        <div class="side-ops f-v">
+          <a href="{% url 'words:update_word' random_word.id %}">Update</a>
+          <a href="{% url 'words:delete_word' random_word.id %}">Delete</a>
+        </div>
+      </div>
+        <p>{{random_word.word}}</p>
+      </div>
+      <div class="def-box f-v p-1">
+        <p class="heading-tag">Defination</p>
+        <p>{{random_word.define}}</p>
+      </div>
+      <div class="example-box f-v p-1">
+        <p class="heading-tag">Example</p>
+        <p>{{random_word.example}}</p>
+      </div>
+  </div>
+
+  
+
+  <div class="words-grid">
+  <div class="search-bar f-v">
+  <input type="text" name="search" id="search" placeholder = "Search for words">
+  </div>
+  {% for word in words %}
+  <div class="word-grid-box"><a class = "word-value" href= "{% url 'words:word_detail' word.id  %}">{{word.word}}</a></div>
+  {% endfor %}
+  </div>
+
+
+</div>
+
+
+{% endblock content %}
+
+{% block js %}
+{% load static %}
+  <script src="{% static 'js/search.js' %}"></script>
+{% endblock js %}

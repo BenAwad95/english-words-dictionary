@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}{{page_title|title}}
+{% endblock title %}
+
+{% block content %}
+<form id="del-form" action="" method="post">
+ {% csrf_token %}
+<h1>Do you want delete this word "{{word.word}}"?</h1>
+<div class="btns">
+  <input type="submit" value="Yes">
+  <a href="../">No</a>
+</div>
+</form>
+{% endblock content %}

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ page_title |title}}
+{% endblock title %}
+
+
+{% block content %}
+  <div class='container'>
+    <div class="word-show">
+      <h2 class="word_text"><a href="{{ random_word.get_absolute_url }}">{{ random_word.word_text }}
+      </a> 
+      <small class="word_type">{{ random_word.get_word_type_display }}</small>
+      <audio src="{{random_word.audio_url}}" id="audio_src">
+      </audio>
+      <a id="play_audio"  href="#" class="word-audio">
+        {% if random_word.audio_url %}
+            <i class="fas fa-volume-up ok"></i>
+        {% else %}
+            <i class="fas fa-volume-up"></i>
+        {% endif %}
+      </a>
+      <i class="far fa-copy" id="copy-word-btn"></i></h2> 
+      <h3>Definitions</h3>
+      <ol>
+      {% for def in random_word.definitions.all %}
+        <li>{{ def.definition_text }}<i class="far fa-copy not-especial"></i></li>
+      {% endfor %}
+      </ol>
+      <h3>Examples</h3>
+      <ol>
+      {% for exa in random_word.examples.all %}
+        <li>{{ exa.example_text }}<i class="far fa-copy not-especial"></i></li>
+      {% endfor %}
+      </ol>
+    </div>
+    <div class="words-grid">
+      <div class="search-bar f-v">
+        <input type="text" name="search" id="search" placeholder = "Search for words">
+      </div>
+      {% for word in object_list %}
+        <div class="word-grid-box">
+          <section class="flex-first-row">
+            <a class = "word-value" href= "{{ word.get_absolute_url }}">{{word.word_text}}</a>&nbsp;&nbsp;
+            <p class="word-type">{{ word.get_word_type_display }}</p>
+          </section>
+          <section>
+            <audio src="{{word.audio_url}}" id="audio_src">
+            </audio>
+            <a id="play_audio"  href="#" class="word-audio">
+              {% if word.audio_url %}
+                  <i class="fas fa-volume-up ok"></i>
+              {% else %}
+                  <i class="fas fa-volume-up"></i>
+              {% endif %}
+            </a>
+          </section>
+        </div>
+      {% endfor %}
+    </div>
+    
+  </div>
+{% endblock content %}
+
+{% block js %}
+{% load static %}
+  <script src="{% static 'js/search.js' %}"></script>
+  <script src="{% static 'js/copyText.js' %}"></script>
+  <script src="{% static 'js/play_audio_list.js' %}"></script>
+{% endblock js %}
