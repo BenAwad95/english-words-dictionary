@@ -1,0 +1,26 @@
+
+@media (max-width: 800px) {
+    #greeting-heading{
+        font-size: 2rem;
+    }
+    .container{
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 2rem;
+        margin: auto;
+    }
+
+    .word-show{
+        padding: 1rem 0;
+    }
+}
+
+@media (max-width: 600px){
+    h1.logo{
+        font-size: 3rem;
+    }
+    ul li {
+        font-size: 1rem;
+    }
+}
