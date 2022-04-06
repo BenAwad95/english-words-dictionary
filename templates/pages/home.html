@@ -7,6 +7,6 @@
 
 {% block content %}
   {% comment %} <p>صباح الخير مهندس عبدالله,<br> حبيت اقولك ترا العمل المستمر والدوؤب لابد أن ياتي بثماره <br> فالله الله في الجد والاجتهاد</p> {% endcomment %}
-  <h2 id='greeting-heading'>Learn new languge reqired daily practce.</h2>
-  <p>What are waiting for? come on let's <a href="" class="btn btn-1">Add new word</a> or <a href="" class="btn btn-2">Review your words</a></p> 
+  <h2 id='greeting-heading'>Learn new languge reqired daily practce</h2>
+  <p>What are waiting for? come on let's <br> <a href="{% url 'theNewStore:word_create' %}" class="btn btn-1">Add new word</a> or <a href="{% url 'theNewStore:word_list' %}" class="btn btn-2">Review your words</a></p> 
 {% endblock content %}
