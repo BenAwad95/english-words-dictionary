@@ -19,7 +19,7 @@
         <a href="{{ object.delete_url }}"><i class="fas fa-trash-alt" title="Delete"></i></a>
       </div>
       <h2 class="word_text">{{ object.word_text }} <small class="word_type">{{ object.get_word_type_display }}</small>
-      <audio src="{{object.audio_url}}" id="audio_src">
+      <audio src="{{object.pron_word_link}}" id="audio_src">
       </audio>
       <a id="play_audio" scr="{{object.audio_url}}" href="#" class="word-audio">
         {% if object.audio_url %}

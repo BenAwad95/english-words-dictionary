@@ -6,6 +6,7 @@ from django.contrib import messages
 from .models import WordModel, DefinitionsModel, ExampleModel
 from .forms import WordForm
 import random
+from .utlls import get_link_from_url
 # ? import prefetch due to handle the relented objects
 
 app_name = 'theNewStore'
@@ -70,15 +71,19 @@ class WordCreateView(CreateView):
     def form_valid(self, form):
         # print(form.cleaned_data)
         word_obj = form.instance
-        word_obj.save()
         cleaned_data = form.cleaned_data
         definitions = cleaned_data['definition'].split('-')
         examples = cleaned_data['example'].split('-')
+        pron_word_link = cleaned_data['pron_word_link']
+        word_pron_audio_link = get_link_from_url(pron_word_link)
+        word_obj.pron_word_link = word_pron_audio_link
+        word_obj.save()
         # create definition model for all in the list
         for definition in definitions:
             DefinitionsModel.objects.create(word=word_obj, definition_text=definition.strip())
         for example in examples:
             ExampleModel.objects.create(word=word_obj, example_text=example.strip())
+        print(cleaned_data)
         messages.success(self.request, f'The {word_obj.word_text} word was created successfully')
         return super().form_valid(form)
 
@@ -98,10 +103,13 @@ class WordUpdateView(UpdateView):
     def form_valid(self, form):
         # print(form.cleaned_data)
         word_obj = form.instance
-        word_obj.save()
         cleaned_data = form.cleaned_data
         definitions = cleaned_data['definition'].split('-')
         examples = cleaned_data['example'].split('-')
+        pron_word_link = cleaned_data['pron_word_link']
+        word_pron_audio_link = get_link_from_url(pron_word_link)
+        word_obj.pron_word_link = word_pron_audio_link
+        word_obj.save()
         # delete all the definitions and examples. I don't any way now to deal with update these data
         defs = word_obj.definitions.all()
         exas = word_obj.examples.all()

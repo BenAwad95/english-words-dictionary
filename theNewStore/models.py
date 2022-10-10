@@ -1,3 +1,5 @@
+from email.policy import default
+from tabnanny import verbose
 from django import urls
 from django.db import models
 from django.urls import reverse
@@ -40,6 +42,8 @@ class WordModel(models.Model):
     word_type = models.CharField(verbose_name='word type', max_length=10, default= NOUN,choices=WORD_TYPE_CHOICES, blank=False)
     word_image = models.ImageField(verbose_name='an example image', upload_to= image_file_path, blank=True, null=True)
     audio_file = models.FileField(verbose_name='word Pronunciation', upload_to= audio_file_path,max_length=100, blank=True, null=True, validators=[validate_audio_file])
+    # audio link field
+    pron_word_link = models.CharField(max_length=250, verbose_name='Pronunciation link of word', blank=True, null=True, default=None)
     # audio_sample = models.AudioField()
 
     # def clean(self):
