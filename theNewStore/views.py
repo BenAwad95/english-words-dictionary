@@ -83,7 +83,6 @@ class WordCreateView(CreateView):
             DefinitionsModel.objects.create(word=word_obj, definition_text=definition.strip())
         for example in examples:
             ExampleModel.objects.create(word=word_obj, example_text=example.strip())
-        print(cleaned_data)
         messages.success(self.request, f'The {word_obj.word_text} word was created successfully')
         return super().form_valid(form)
 
@@ -107,8 +106,11 @@ class WordUpdateView(UpdateView):
         definitions = cleaned_data['definition'].split('-')
         examples = cleaned_data['example'].split('-')
         pron_word_link = cleaned_data['pron_word_link']
-        word_pron_audio_link = get_link_from_url(pron_word_link)
-        word_obj.pron_word_link = word_pron_audio_link
+        try:
+            word_pron_audio_link = get_link_from_url(pron_word_link)
+            word_obj.pron_word_link = word_pron_audio_link
+        except:
+            print("There's problem here")
         word_obj.save()
         # delete all the definitions and examples. I don't any way now to deal with update these data
         defs = word_obj.definitions.all()

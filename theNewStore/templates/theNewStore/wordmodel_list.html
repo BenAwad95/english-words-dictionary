@@ -11,10 +11,10 @@
       <h2 class="word_text"><a href="{{ random_word.get_absolute_url }}">{{ random_word.word_text }}
       </a> 
       <small class="word_type">{{ random_word.get_word_type_display }}</small>
-      <audio src="{{random_word.audio_url}}" id="audio_src">
+      <audio src="{{random_word.pron_word_link}}" id="audio_src">
       </audio>
       <a id="play_audio"  href="#" class="word-audio">
-        {% if random_word.audio_url %}
+        {% if random_word.pron_word_link %}
             <i class="fas fa-volume-up ok"></i>
         {% else %}
             <i class="fas fa-volume-up"></i>
@@ -45,10 +45,10 @@
             <p class="word-type">{{ word.get_word_type_display }}</p>
           </section>
           <section>
-            <audio src="{{word.audio_url}}" id="audio_src">
+            <audio src="{{word.pron_word_link}}" id="audio_src">
             </audio>
             <a id="play_audio"  href="#" class="word-audio">
-              {% if word.audio_url %}
+              {% if word.pron_word_link %}
                   <i class="fas fa-volume-up ok"></i>
               {% else %}
                   <i class="fas fa-volume-up"></i>

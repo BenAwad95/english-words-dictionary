@@ -21,8 +21,8 @@
       <h2 class="word_text">{{ object.word_text }} <small class="word_type">{{ object.get_word_type_display }}</small>
       <audio src="{{object.pron_word_link}}" id="audio_src">
       </audio>
-      <a id="play_audio" scr="{{object.audio_url}}" href="#" class="word-audio">
-        {% if object.audio_url %}
+      <a id="play_audio" scr="{{object.pron_word_link}}" href="#" class="word-audio">
+        {% if object.pron_word_link %}
             <i class="fas fa-volume-up ok"></i>
         {% else %}
             <i class="fas fa-volume-up"></i>
@@ -30,7 +30,7 @@
       </a>
       <i class="far fa-copy" id="copy-word-btn"></i>
       </h2> 
-      <a href="{{object.audio_url}}">Audio</a>
+      <a href="{{object.pron_word_link}}">Audio</a>
       <h3>Definitions</h3>  
       <ol>
       {% for def in object.definitions.all %}
