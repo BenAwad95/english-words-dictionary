@@ -110,7 +110,7 @@ class WordUpdateView(UpdateView):
             word_pron_audio_link = get_link_from_url(pron_word_link)
             word_obj.pron_word_link = word_pron_audio_link
         except:
-            print("There's problem here")
+            print("There's problem with URL")
         word_obj.save()
         # delete all the definitions and examples. I don't any way now to deal with update these data
         defs = word_obj.definitions.all()

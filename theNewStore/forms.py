@@ -10,11 +10,11 @@ class WordForm(forms.ModelForm):
     # In meta class you can just contaol over the model fields
     class Meta:
         model = WordModel
-        fields = '__all__'
+        exclude = ['audio_file', 'word_image']
         widgets ={
             'word_type': forms.RadioSelect,
-            'audio_file': forms.FileInput(attrs={'accept': 'audio/*'})
+            # 'audio_file': forms.FileInput(attrs={'accept': 'audio/*'})
         }
-    field_order = ['word_text', 'word_type', 'definition', 'example', 'audio_file', 'word_image']
+    field_order = ['word_text', 'word_type', 'definition', 'example']
 
         
