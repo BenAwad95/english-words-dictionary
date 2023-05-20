@@ -12,7 +12,7 @@
 {% endif %}
 <div class="my-form">
 <h2 class="heading">New Word</h2>
-<form id = "word-form" action="" method = "POST"  enctype="multipart/form-data">
+<form id = "word-form" action="" method = "POST"  enctype="multipart/form-data", autocomplete="off">
 {% csrf_token %}
 {% for field in form %}
 <fieldset>

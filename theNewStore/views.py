@@ -23,8 +23,6 @@ app_name = 'theNewStore'
 #             example.save()
 #     except:
 #         pass
-
-
 class WordListView(ListView):
 
     def get_queryset(self):
@@ -41,7 +39,7 @@ class WordListView(ListView):
         query_set = list(WordModel.objects.prefetch_related('examples','definitions'))
         random.shuffle(query_set)
         # print(query_set)
-        context['object_list'] = query_set[:10]
+        context['object_list'] = query_set
         context['page_title'] = 'All words'
         return context
 

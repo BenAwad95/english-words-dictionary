@@ -41,7 +41,7 @@
       {% for word in object_list %}
         <div class="word-grid-box">
           <section class="flex-first-row">
-            <a class = "word-value" href= "{{ word.get_absolute_url }}">{{word.word_text}}</a>&nbsp;&nbsp;
+            <a class = "word-value" href= "{{ word.get_absolute_url }}">{{ forloop.counter }} - {{ word.word_text}}</a>&nbsp;&nbsp;
             <p class="word-type">{{ word.get_word_type_display }}</p>
           </section>
           <section>

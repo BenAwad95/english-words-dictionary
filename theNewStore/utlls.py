@@ -26,6 +26,5 @@ def get_link_from_url(url):
     return audio_link
 
 
-print('Hello Abdullah, \nWe Happy to see back')
 
 

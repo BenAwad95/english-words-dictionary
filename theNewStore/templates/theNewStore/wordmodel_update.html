@@ -7,7 +7,7 @@
 <div class="my-form">
 <h2 class="heading">New Word</h2>
 
-<form id = "word-form" action="" method = "POST" enctype="multipart/form-data">
+<form id = "word-form" action="" method = "POST" enctype="multipart/form-data", autocomplete="offg">
 {% csrf_token %}
 {{form.as_p}}
 <input type="submit" value="Save">
