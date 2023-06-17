@@ -3,4 +3,4 @@ __pycache__
 .vscode
 venv
 abdullah.db
-db.sqlite3
+# db.sqlite3
